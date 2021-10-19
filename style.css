@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
+    font-family: 'Roboto', sans-serif;
 
     --padding: 4px;
     --width: calc(500px + var(--padding) * 2);
@@ -28,7 +32,10 @@ body {
 .item {
     width: 100px;
     height: 100px;
+
     border: 1px solid white;
+
+    text-align: center;
 }
 
 .controls {

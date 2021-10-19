@@ -1,19 +1,20 @@
+
 const itemParent = document.getElementById('main');
 
-
 // filter out the text elements so only the div elements remain
-// put the remaining elements in the items array
-const items = [];
+// put the remaining elements in the itemElements array and shuffle it
+var itemElements = [];
 itemParent.childNodes.forEach(node => {
-    if (node.nodeType === Node.ELEMENT_NODE) items.push(node);
+    if (node.nodeType === Node.ELEMENT_NODE) itemElements.push(node);
+    itemElements = shuffle(itemElements);
 })
 
-console.log(items)
+console.log(itemElements)
 
 // read imported file and put it into a array of text which is split on the linebreak
 let textFile;
 document.getElementById('myFile').addEventListener('change', function() {
-    var fr=new FileReader();
+    var fr = new FileReader();
     fr.onload = () => {
         textFile = fr.result.split("\r\n")
 
@@ -25,15 +26,52 @@ document.getElementById('myFile').addEventListener('change', function() {
             }
         }
 
-        setTextOnScreen()
+        randomizeItems();
+        setTextOnScreen();
     }
         
     fr.readAsText(this.files[0]);
 })
 
+
+document.getElementById('shuffle').addEventListener('click', shuffleItems);
+document.getElementById('randomize').addEventListener('click', randomizeItems);
+
+
 function setTextOnScreen() {
-    textFile.forEach((text, index) => {
-        var tmpElement = document.getElementById(`${index + 1}`);
-        tmpElement.innerHTML = text;
-    })
+    for (let index = 0; index < 25; index++) {
+        itemElements[index].innerHTML = textFile[index];
+    }
+}
+
+
+function shuffleItems() {
+    itemElements = shuffle(itemElements);
+    setTextOnScreen();
+}
+
+
+function randomizeItems() {
+    if (textFile.length === 25) return
+    textFile = shuffle(textFile);
+    setTextOnScreen();
+}
+
+
+function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = 
+        [array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
 }
