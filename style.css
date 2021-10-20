@@ -32,6 +32,14 @@ body {
 .item {
     width: 100px;
     height: 100px;
+    line-height: 100px;
+
+    font-weight: bold;
+
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 
     border: 1px solid white;
 
