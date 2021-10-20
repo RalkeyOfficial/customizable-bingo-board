@@ -31,6 +31,13 @@ fetch('./TEXT.txt')
     })
 
 
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('click', function() {
+        this.classList.toggle('active');
+    })
+})
+
+
 function setTextOnScreen() {
     for (let index = 0; index < 25; index++) {
         itemElements[index].innerHTML = textFile[index];

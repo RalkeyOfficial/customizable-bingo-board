@@ -37,6 +37,12 @@ document.getElementById('myFile').addEventListener('change', function() {
 document.getElementById('shuffle').addEventListener('click', shuffleItems);
 document.getElementById('randomize').addEventListener('click', randomizeItems);
 
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('click', function() {
+        this.classList.toggle('active');
+    })
+})
+
 
 function setTextOnScreen() {
     for (let index = 0; index < 25; index++) {

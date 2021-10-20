@@ -37,6 +37,11 @@ body {
 
     text-align: center;
 }
+.active {
+    background-image: url('./assets/pngaaa.com-747905.png');
+    background-position: center;
+    background-size: contain;
+}
 
 .controls {
     margin: 2em 0;
